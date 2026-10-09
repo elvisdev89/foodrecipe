@@ -12,7 +12,25 @@ export default function RecipesFormScreen({ route, navigation }) {
   );
 
   const saverecipe = async () => {
- 
+    const newrecipe = { title, image, description };
+    
+    try {
+      const existingRecipes = await AsyncStorage.getItem("customrecipes");
+      const recipes = existingRecipes ? JSON.parse(existingRecipes) : [];
+
+      if (recipeToEdit !== undefined) {
+        recipes[recipeIndex] = newrecipe;
+        await AsyncStorage.setItem("customrecipes", JSON.stringify(recipes));
+        if (onrecipeEdited) onrecipeEdited();
+      } else {
+        recipes.push(newrecipe);
+        await AsyncStorage.setItem("customrecipes", JSON.stringify(recipes));
+      }
+
+      navigation.goBack();
+    } catch (error) {
+      console.error("Error al guardar el registro:", error);
+    }
   };
 
   return (
