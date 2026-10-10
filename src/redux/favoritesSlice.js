@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  favoriterecipes: [], // Updated to handle favorite articles
+  favoriterecipes: [],
 };
 
 const favoritesSlice = createSlice({
@@ -10,9 +10,11 @@ const favoritesSlice = createSlice({
   reducers: {
     toggleFavorite: (state, action) => {
         const recipe = action.payload;
+        console.log(recipe);
         const existingIndex = state.favoriterecipes.findIndex(
-          (item) => item.id === article.idFood
+          (item) => item.idFood === recipe.idFood
         );
+        console.log(existingIndex);
         if (existingIndex >= 0) {
           state.favoriterecipes.splice(existingIndex, 1);
         } else {

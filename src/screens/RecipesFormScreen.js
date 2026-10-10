@@ -5,14 +5,17 @@ import {widthPercentageToDP as wp,heightPercentageToDP as hp,} from "react-nativ
 
 export default function RecipesFormScreen({ route, navigation }) {
   const { recipeToEdit, recipeIndex, onrecipeEdited } = route.params || {};
-  const [title, setTitle] = useState(recipeToEdit ? recipeToEdit.title : "");
+  const [name, setName] = useState(recipeToEdit ? recipeToEdit.name : "");
   const [image, setImage] = useState(recipeToEdit ? recipeToEdit.image : "");
-  const [description, setDescription] = useState(
-    recipeToEdit ? recipeToEdit.description : ""
+  const [ingredients, setIngredients] = useState(
+    recipeToEdit ? recipeToEdit.ingredients : ""
+  );
+  const [instructions, setInstructions] = useState(
+    recipeToEdit ? recipeToEdit.instructions : ""
   );
 
   const saverecipe = async () => {
-    const newrecipe = { title, image, description };
+    const newrecipe = { name, image, ingredients, instructions };
     
     try {
       const existingRecipes = await AsyncStorage.getItem("customrecipes");
@@ -27,7 +30,7 @@ export default function RecipesFormScreen({ route, navigation }) {
         await AsyncStorage.setItem("customrecipes", JSON.stringify(recipes));
       }
 
-      navigation.goBack();
+      navigation.navigate("MyFood")
     } catch (error) {
       console.error("Error al guardar el registro:", error);
     }
@@ -36,9 +39,9 @@ export default function RecipesFormScreen({ route, navigation }) {
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Title"
-        value={title}
-        onChangeText={setTitle}
+        placeholder="Name"
+        value={name}
+        onChangeText={setName}
         style={styles.input}
       />
       <TextInput
@@ -53,9 +56,17 @@ export default function RecipesFormScreen({ route, navigation }) {
         <Text style={styles.imagePlaceholder}>Upload Image URL</Text>
       )}
       <TextInput
-        placeholder="Description"
-        value={description}
-        onChangeText={setDescription}
+        placeholder="Ingredients"
+        value={ingredients}
+        onChangeText={setIngredients}
+        multiline={true}
+        numberOfLines={4}
+        style={[styles.input, { height: hp(20), textAlignVertical: "top" }]}
+      />
+      <TextInput
+        placeholder="Instructions"
+        value={instructions}
+        onChangeText={setInstructions}
         multiline={true}
         numberOfLines={4}
         style={[styles.input, { height: hp(20), textAlignVertical: "top" }]}

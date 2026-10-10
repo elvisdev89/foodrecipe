@@ -63,20 +63,18 @@ import {
           >
             <Text>Back</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={handleToggleFavorite}
-            style={styles.favoriteButton}
-          >
-            <Text>{isFavourite ? "♥" : "♡"}</Text>
-          </TouchableOpacity>
         </View>
   
         {/* Recipe Details */}
         <View style={styles.contentContainer} testID="contentContainer">
-            <Text style={styles.recipeTitle}>{recipe.title}</Text>
+            <Text style={styles.recipeTitle}>{recipe.name}</Text>
             <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Content</Text>
-                <Text style={styles.contentText}>{recipe.description}</Text>
+                <Text style={styles.sectionTitle}>Ingredients</Text>
+                <Text style={styles.contentText}>{recipe.ingredients}</Text>
+            </View>
+            <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Instructions</Text>
+                <Text style={styles.contentText}>{recipe.instructions}</Text>
             </View>
         </View>
       </ScrollView>

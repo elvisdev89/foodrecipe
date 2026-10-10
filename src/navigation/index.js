@@ -24,7 +24,7 @@ function AppNavigation() {
         <Stack.Screen name="MyFood" component={MyRecipeScreen} />
         <Stack.Screen name="CustomRecipesScreen" component={CustomRecipesScreen} />
         <Stack.Screen name="RecipesFormScreen" component={RecipesFormScreen} />
-        <Stack.Screen name="FavoriteScreen" component={FavoriteScreen} />
+        <Stack.Screen name="FavoriteScreen" component={FavoriteScreen} />        
       </Stack.Navigator>
     </NavigationContainer>
   );

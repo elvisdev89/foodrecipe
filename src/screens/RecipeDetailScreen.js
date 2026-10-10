@@ -102,8 +102,7 @@ export default function RecipeDetailScreen(props) {
             {(recipe.ingredients).map((i) => (
                 <View style={styles.ingredientItem}>
                     <View style={styles.ingredientBullet}></View>
-                    <Text style={styles.ingredientText}>{i.ingredientName} {i.measure}</Text>
-                    
+                    <Text style={styles.ingredientText}>{i.ingredientName} {i.measure}</Text>                    
                 </View>
             ))}
         </View>
@@ -113,8 +112,6 @@ export default function RecipeDetailScreen(props) {
       <View style={styles.sectionContainer} testID="sectionContainer">
         <Text style={styles.sectionTitle}>Instrucciones</Text>
         <Text style={styles.instructionsText}>{recipe.recipeInstructions}</Text>
-        
-        
       </View>
     </ScrollView>
   );

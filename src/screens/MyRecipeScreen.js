@@ -83,9 +83,9 @@ import {
                         />
                     )}
 
-                    <Text style={styles.recipeTitle}>{recipe.title}</Text>
+                    <Text style={styles.recipeTitle}>{recipe.name}</Text>
                     <Text style={styles.recipeDescription} testID="recipeDescp">
-                      {recipe.description?.substring(0, 50) + "..."}
+                      {recipe.instructions?.substring(0, 50) + "..."}
                     </Text>
                   </TouchableOpacity>
   
@@ -93,7 +93,7 @@ import {
                   <View style={styles.actionButtonsContainer} testID="editDeleteButtons">
                     <TouchableOpacity
                         onPress={() => editrecipe(recipe, index)}
-                        style={styles.editButton} onPress={() => handlerecipeClick(recipe)}
+                        style={styles.editButton}
                     >
                         <Text style={styles.editButtonText}>Editar</Text>
                     </TouchableOpacity>
